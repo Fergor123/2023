@@ -1,0 +1,272 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/MazeWallEastWest.proto"
+EXTERNPROTO "../protos/MazeWallNorthSouth.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5773502691896257 0.5773502691896257 0.5773502691896257 2.0943245915045035
+  position 0.0007457124777949188 0.00015790036199639186 3.0769964925185884
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 1.5
+}
+DEF epuck E-puck {
+  translation -.75 .75 -6.394982769581531e-05
+  rotation 2.1584577478876112e-06 0.9999999999975838 -4.1661928347814393e-07 0.0011223273430061098
+  controller "Lab4_Task2"
+  supervisor TRUE
+  turretSlot [
+    Lidar {
+      translation 0.01 0 0.01
+      rotation 0 0 1 3.1415
+      horizontalResolution 360
+      fieldOfView 6.28319
+      numberOfLayers 1
+      minRange 0.04
+      noise 0.01
+    }
+    DEF Front DistanceSensor {
+      translation 0.037 0 0
+      name "front distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Right DistanceSensor {
+      translation 0 -0.037 0
+      rotation 0 0 1 -1.5708
+      name "right distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Rear DistanceSensor {
+      translation -0.037 0 0
+      rotation 0 0 1 3.1415
+      name "rear distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Left DistanceSensor {
+      translation 0 0.037 0
+      rotation 0 0 1 1.5708
+      name "left distance sensor"
+      recognitionColors [
+        0 0 0
+      ]
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    InertialUnit {
+      rotation -1 0 0 0
+    }
+    Camera {
+      translation 0.037 0 0
+      name "camera1"
+      recognitionColors [
+        1 1 0
+      ]
+      fieldOfView 1.57
+      width 80
+      height 80
+      recognition Recognition {
+      }
+    }
+  ]
+}
+DEF YellowCylinder Solid {
+  translation 0.25 0.0 0.14925
+  rotation -5.989537882062313e-18 1.528979375874396e-17 1 1.5707963267948961
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry Cylinder {
+        height 1
+        radius 0.08
+      }
+    }
+  ]
+  name "Yellow Landmark"
+  boundingObject DEF landmark Shape {
+    appearance PBRAppearance {
+      baseColor 0 1 1
+      roughness 1
+      metalness 0
+    }
+    geometry Cylinder {
+      height 0.5
+      radius 0.045
+    }
+  }
+  physics DEF landmarkPH Physics {
+  }
+  recognitionColors [
+    1 1 0
+  ]
+}
+Floor {
+  translation 0 0 0
+  size 2.0 2.0
+  tileSize .5 .5
+}
+MazeWallNorthSouth {
+  translation -0.125 0.0 0.025
+  name "Obsticle 1"
+  size 1 0.25 0.1
+}
+MazeWallNorthSouth {
+  translation 0.25 -0.375 0.025
+  name "Obsticle 2"
+  size .25 0.5 0.1
+}
+MazeWallNorthSouth {
+  translation -0.375 -0.375 0.025
+  name "Obsticle 3"
+  size .25 0.25 0.1
+}
+MazeWallNorthSouth {
+  translation -0.875 1.0 0.025
+  name "Cell 0 North Wall"
+}
+MazeWallEastWest {
+  translation -1.0 0.875 0.025
+  name "Cell 0 West Wall"
+}
+MazeWallNorthSouth {
+  translation -0.625 1.0 0.025
+  name "Cell 1 North Wall"
+}
+MazeWallNorthSouth {
+  translation -0.375 1.0 0.025
+  name "Cell 2 North Wall"
+}
+MazeWallNorthSouth {
+  translation -0.125 1.0 0.025
+  name "Cell 3 North Wall"
+}
+MazeWallNorthSouth {
+  translation 0.125 1.0 0.025
+  name "Cell 4 North Wall"
+}
+MazeWallNorthSouth {
+  translation 0.375 1.0 0.025
+  name "Cell 5 North Wall"
+}
+MazeWallNorthSouth {
+  translation 0.625 1.0 0.025
+  name "Cell 6 North Wall"
+}
+MazeWallNorthSouth {
+  translation 0.875 1.0 0.025
+  name "Cell 7 North Wall"
+}
+MazeWallEastWest {
+  translation 1.0 0.875 0.025
+  name "Cell 7 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 0.625 0.025
+  name "Cell 8 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 0.625 0.025
+  name "Cell 15 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 0.375 0.025
+  name "Cell 16 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 0.375 0.025
+  name "Cell 23 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 0.125 0.025
+  name "Cell 24 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 0.125 0.025
+  name "Cell 31 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 -0.125 0.025
+  name "Cell 32 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 -0.125 0.025
+  name "Cell 39 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 -0.375 0.025
+  name "Cell 40 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 -0.375 0.025
+  name "Cell 47 East Wall"
+}
+MazeWallEastWest {
+  translation -1.0 -0.625 0.025
+  name "Cell 48 West Wall"
+}
+MazeWallEastWest {
+  translation 1.0 -0.625 0.025
+  name "Cell 55 East Wall"
+}
+MazeWallNorthSouth {
+  translation -0.875 -1.0 0.025
+  name "Cell 56 South Wall"
+}
+MazeWallEastWest {
+  translation -1.0 -0.875 0.025
+  name "Cell 56 West Wall"
+}
+MazeWallNorthSouth {
+  translation -0.625 -1.0 0.025
+  name "Cell 57 South Wall"
+}
+MazeWallNorthSouth {
+  translation -0.375 -1.0 0.025
+  name "Cell 58 South Wall"
+}
+MazeWallNorthSouth {
+  translation -0.125 -1.0 0.025
+  name "Cell 59 South Wall"
+}
+MazeWallNorthSouth {
+  translation 0.125 -1.0 0.025
+  name "Cell 60 South Wall"
+}
+MazeWallNorthSouth {
+  translation 0.375 -1.0 0.025
+  name "Cell 61 South Wall"
+}
+MazeWallNorthSouth {
+  translation 0.625 -1.0 0.025
+  name "Cell 62 South Wall"
+}
+MazeWallEastWest {
+  translation 1.0 -0.875 0.025
+  name "Cell 63 East Wall"
+}
+MazeWallNorthSouth {
+  translation 0.875 -1.0 0.025
+  name "Cell 63 South Wall"
+}

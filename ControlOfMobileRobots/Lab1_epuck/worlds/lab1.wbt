@@ -1,0 +1,93 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5773502691896257 0.5773502691896257 0.5773502691896257 2.0943245915045035
+  position -3.8426653598446376e-05 -0.0002412953026827347 6.921607169131837
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 1.5
+}
+RectangleArena {
+  rotation 0 1 0 0
+  floorSize 3 3
+}
+DEF epuck E-puck {
+  hidden position_0_0 21.058271935176958
+  hidden position_0_1 32.114862878528406
+  hidden linearVelocity_0 0.0001624835175426579 3.18945420009378e-05 -1.2847154676823442e-08
+  hidden angularVelocity_0 -0.0021262994024239946 0.010832217193419145 5.764812244739343e-12
+  hidden rotation_1 0 -1 0 4.074469293541388
+  hidden linearVelocity_1 0.00021664423154468408 4.252596599553365e-05 -2.3607074283928195e-11
+  hidden angularVelocity_1 -0.002126299401076464 0.010832217188809614 -1.1654185286955284e-10
+  hidden rotation_2 0 -1 0 5.584248964549113
+  hidden linearVelocity_2 0.00021664423135013457 4.2525965963475695e-05 -2.4744873013512637e-11
+  hidden angularVelocity_2 -0.0021262994012023716 0.010832217188803134 1.2807167564515533e-10
+  translation -0.26742055395648917 0.3901579941995992 -6.396292037952507e-05
+  rotation 1.6363000223681726e-05 1.5909437177440384e-06 0.9999999998648607 -2.9477630693973507
+  controller "lab1_task2"
+  supervisor TRUE
+  turretSlot [
+    DEF Front DistanceSensor {
+      translation 0.045 0 -0.011
+      name "front distance sensor"
+      lookupTable [
+        0 0 0
+        1.27 1.27 0.1
+      ]
+    }
+    DEF Right DistanceSensor {
+      translation 0.01 -0.035 -0.011
+      rotation 0 0 1 -1.5707853071795865
+      name "right distance sensor"
+      lookupTable [
+        0 0 0
+        1.27 1.27 0.1
+      ]
+    }
+    DEF Rear DistanceSensor {
+      translation -0.025 0 -0.011
+      rotation 0 0 1 3.1415
+      name "rear distance sensor"
+      lookupTable [
+        0 0 0
+        1.27 1.27 0.1
+      ]
+    }
+    DEF Left DistanceSensor {
+      translation 0.01 0.035 -0.011
+      rotation 0 0 1 1.5708
+      name "left distance sensor"
+      recognitionColors [
+        0 0 0
+      ]
+      lookupTable [
+        0 0 0
+        1.27 1.27 0.1
+      ]
+    }
+    InertialUnit {
+      rotation -1 0 0 -5.307179586466759e-06
+    }
+    Camera {
+      translation 0.043 0 -0.015
+      name "camera1"
+      recognitionColors [
+        1 1 0
+      ]
+      fieldOfView 1.57
+      width 80
+      height 80
+      recognition Recognition {
+      }
+    }
+  ]
+}
